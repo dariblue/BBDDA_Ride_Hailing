@@ -1,0 +1,23 @@
+services:
+  db:
+    # Usando el servidor de Amazon (AWS) en lugar de Docker Hub
+    image: public.ecr.aws/docker/library/mariadb:10.11
+    ports:
+      - "3306:3306"
+    environment:
+      - MARIADB_ROOT_PASSWORD=root
+      - MARIADB_DATABASE=ridehailing
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init-scripts:/docker-entrypoint-initdb.d/
+
+  adminer:
+    # Usando el servidor de Amazon (AWS)
+    image: public.ecr.aws/docker/library/adminer:4.8.1
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+volumes:
+  db_data:

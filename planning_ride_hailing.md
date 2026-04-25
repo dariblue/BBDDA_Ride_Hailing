@@ -387,15 +387,15 @@ gantt
 
 | # | Archivo | Contenido | Estado |
 |---|---------|-----------|--------|
-| 1 | `schema.sql` | CREATE DATABASE + TABLES + INDEXES | ⬜ |
+| 1 | `schema.sql` | CREATE DATABASE + TABLES + INDEXES | ✅ |
 | 2 | `data.sql` | INSERTs masivos de datos de prueba | ⬜ |
 | 3 | `queries.sql` | CRUD + JOINs + Transacciones + Locks | ⬜ |
 | 4 | `dashboard.sql` | Consultas de dashboards (negocio + BD) | ⬜ |
 | 5 | `backup.sql` | Plan de backup documentado + scripts | ⬜ |
 | 6 | `permissions.sql` | Usuarios de BD + GRANTs justificados | ⬜ |
-| 7 | `compose.yml` | Docker Compose (BD + dashboard) | ⬜ |
+| 7 | `compose.yml` | Docker Compose (BD + dashboard) | ✅ |
 | 8 | `README.md` | Instrucciones completas de arranque | ⬜ |
-| 9 | `DESIGN.md` | Documentación de diseño + MER Mermaid | ⬜ |
+| 9 | `DESIGN.md` | Documentación de diseño + MER Mermaid | ✅ |
 | 10 | `presentacion.pdf` | Presentación para la defensa | ⬜ |
 
 ---
