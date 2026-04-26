@@ -77,16 +77,4 @@ LINES TERMINATED BY '\n'
 FROM PAYMENT;
 
 
--- =========================================================================
--- ANEXO: COMANDOS DE CONSOLA PARA EL DBA (BACKUP TOTAL)
--- =========================================================================
-/*
-Para justificarlo en la defensa: Los backups completos (Estructura + Datos) 
-no se hacen con sentencias SQL internas, sino con la herramienta externa 'mysqldump'.
 
-Comando para Backup Completo (Diario):
-> mysqldump -u backup_user -p --single-transaction --routines --triggers ridehailing > backup_full.sql
-
-Comando para Restauración (Disaster Recovery):
-> mysql -u admin_ridehailing -p ridehailing < backup_full.sql
-*/
