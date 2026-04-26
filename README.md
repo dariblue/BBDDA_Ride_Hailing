@@ -62,6 +62,8 @@ La estructura principal del proyecto entregado es la siguiente:
 ├── ⚡ queries.sql                     # Consultas de negocio, CRUD y transacciones concurrentes.
 ├── 📊 dashboard.sql                   # Consultas de métricas y rendimiento preparadas para Grafana.
 ├── 💾 backup.sql                      # Sistema de Eventos (Archivado automático y volcado a CSV).
+├── 📐 DESIGN.md                       # Explicación detallada del diseño de la BDD, tablas y MER.
+├── 🖥️ presentacion.pdf                # Diapositivas para la defensa del proyecto.
 └── 📖 README.md                       # Documentación técnica del proyecto (Este archivo).
 ```
 
