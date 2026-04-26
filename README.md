@@ -1,6 +1,5 @@
 # 🚖 Ride-Hailing Database System - BBDDA
 
-Bienvenido a la documentación de nuestro proyecto de **Ride-Hailing**, un sistema de base de datos transaccional (OLTP) enfocado en gestionar la infraestructura de datos para una aplicación tipo Uber o Cabify.
 
 Este proyecto tiene como objetivo diseñar una base de datos capaz de soportar **alta concurrencia** en escenarios de uso intensivo. El foco principal ha sido garantizar la consistencia de la información durante procesos críticos (como la aceptación simultánea de viajes), mantener la integridad referencial y asegurar una correcta gestión de permisos. Además, hemos incorporado una capa analítica para la monitorización en tiempo real de las métricas de negocio y rendimiento.
 
@@ -18,7 +17,7 @@ Para abordar el proyecto de manera integral, nos hemos dividido las tareas en tr
 
 ## 📋 Requisitos Previos
 
-La plataforma se despliega utilizando contenedores, por lo que es necesario contar con los siguientes elementos instalados en el entorno de evaluación:
+La plataforma se despliega utilizando contenedores, por lo que era necesario que contaramos con los siguientes elementos instalados en el entorno de evaluación:
 
 - [Docker](https://docs.docker.com/get-docker/)
 - [Docker Compose](https://docs.docker.com/compose/install/)
@@ -73,10 +72,10 @@ La estructura principal del proyecto entregado es la siguiente:
 El despliegue está completamente automatizado. Para arrancar la infraestructura, abre la terminal en la carpeta principal del proyecto y ejecuta:
 
 ```bash
-docker compose up -d
-```
+docker compose up -d  
+```  
 
-> **Inicialización Automática:** La primera vez que se lanza el contenedor, MariaDB detectará que la base de datos está vacía. Inmediatamente después, leerá la carpeta `./init-scripts/` y ejecutará de forma ordenada los scripts `01_schema.sql`, `02_data.sql` y `03_permissions.sql`. De esta forma, el servidor quedará totalmente configurado, con datos y reglas de seguridad aplicadas automáticamente sin requerir configuración manual.
+ La primera vez que se lanza el contenedor, MariaDB detectará que la base de datos está vacía. Inmediatamente después, leerá la carpeta `./init-scripts/` y ejecutará de forma ordenada los scripts `01_schema.sql`, `02_data.sql` y `03_permissions.sql`. De esta forma, el servidor queda totalmente configurado, con datos y reglas de seguridad aplicadas automáticamente sin necesitar configuración manual.
 
 ---
 
@@ -89,12 +88,3 @@ Una vez inicializado el entorno, estos son los puntos de acceso a las distintas 
 | **Adminer** (Gestor UI) | [http://localhost:8080](http://localhost:8080) | Servidor: `db` <br> User: `root` <br> Pass: `root` |
 | **Grafana** (Visualización) | [http://localhost:3000](http://localhost:3000) | User: `admin` <br> Pass: `admin` |
 | **MariaDB** (Conexión para IDE) | `localhost:3306` | User: `root` <br> Pass: `root` |
-
----
-
-## 📈 Verificación Práctica
-
-Sugerimos dos tareas para comprobar el funcionamiento avanzado de nuestra implementación:
-
-- **Monitorización de Negocio:** Ingresa a Grafana, conecta MariaDB (usando el host interno `db`) y utiliza las sentencias de `dashboard.sql` para visualizar de forma gráfica los ingresos y la carga de viajes del sistema.
-- **Exportación Segura de Datos:** Desde Adminer, ejecuta las sentencias de volcado ubicadas en `backup.sql`. Podrás verificar cómo el sistema exporta de manera segura archivos `.csv` al directorio temporal del contenedor (`/tmp/`).
