@@ -1,5 +1,6 @@
 services:
   db:
+    # Usamos un mirror de AWS (ECR) en lugar del Docker Hub oficial ya que no nos dejaba descargar la imagen
     image: public.ecr.aws/docker/library/mariadb:10.11
     ports:
       - "3306:3306"
@@ -7,14 +8,18 @@ services:
       - MARIADB_ROOT_PASSWORD=root
       - MARIADB_DATABASE=ridehailing
     volumes:
+      # Persistencia de datos: Evitamos que la base de datos se borre al apagar el contenedor.
       - db_data:/var/lib/mysql
+      # Auto-Despliegue: MariaDB ejecutará automáticamente todos los scripts .sql de esta carpeta al arrancar por primera vez.
       - ./init-scripts:/docker-entrypoint-initdb.d/
 
   adminer:
+    # Cliente web ligero para gestionar la BDD visualmente sin necesidad de instalar programas externos.
     image: public.ecr.aws/docker/library/adminer:4.8.1
     ports:
       - "8080:8080"
     depends_on:
+      # Nos aseguramos de que MariaDB esté encendida antes de arrancar Adminer
       - db
 
   grafana:
@@ -22,6 +27,7 @@ services:
     ports:
       - "3000:3000"
     depends_on:
+      # Nos aseguramos de que MariaDB esté encendida antes de arrancar Grafana
       - db
 
 volumes:

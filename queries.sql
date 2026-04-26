@@ -89,8 +89,7 @@ START TRANSACTION;
 -- 3.1 Bloqueo Pesimista (Lock) de la oferta
 -- El FOR UPDATE evita Race Conditions: si 2 conductores intentan aceptar ofertas
 -- del mismo viaje a la vez, o si alguien intenta modificar esta oferta, tendrán que esperar.
-SELECT trip_id INTO @target_trip_id
-FROM OFFER 
+SELECT trip_id INTO @target_trip_id FROM OFFER 
 WHERE offer_id = @target_offer_id 
   AND driver_id = @target_driver_id
   AND status = 'pending'
@@ -121,7 +120,7 @@ SET driver_id = @target_driver_id,
     accepted_at = CURRENT_TIMESTAMP
 WHERE trip_id = @target_trip_id;
 
--- 3.6 (Opcional) Generar registro preliminar en PAYMENT
+-- 3.6 Generar registro preliminar en PAYMENT
 -- Se crea en estado 'pending' basado en el price_estimated
 INSERT INTO PAYMENT (trip_id, amount, platform_fee, driver_earnings, method, status)
 SELECT 

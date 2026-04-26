@@ -1,6 +1,6 @@
 -- =========================================================================
 -- SCRIPT DE BACKUP LÓGICO Y ARCHIVADO - RIDE HAILING APP (Fase 5)
--- Nota académica: El backup completo de una BD se hace mediante terminal 
+-- El backup completo de una BD se hace mediante terminal 
 -- con 'mysqldump'. Este script muestra estrategias de backup lógico, 
 -- exportación de datos y archivado utilizando puramente SQL.
 -- =========================================================================
